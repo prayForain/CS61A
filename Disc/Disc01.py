@@ -1,7 +1,6 @@
 #Disc 1 Control and Environments
 #pass-test
 
-
 #1.1
 
 def wears_jacket(temp, raining):
