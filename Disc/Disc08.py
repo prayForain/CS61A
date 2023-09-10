@@ -169,6 +169,38 @@ def find_paths(t, entry):
                 paths.append([t.label] + path)
     return paths
         
+#3.4
+
+def combine_tree(t1, t2, combiner):
+    """
+    >>> a = Tree(1, [Tree(2, [Tree(3)])])
+    >>> b = Tree(4, [Tree(5, [Tree(6)])])
+    >>> combined = combine_tree(a, b, lambda x, y: x * y)
+    >>> combined.label
+    4
+    >>> combined.branches[0].label
+    10
+    """
+    t1.label = combiner(t1.label, t2.label)
+    for b1, b2 in zip(t1.branches, t2.branches):
+        combine_tree(b1, b2, combiner)
+    return t1
+
+#3.5
+
+def alt_tree_map(t, map_fn):
+    """
+    >>> t = Tree(1, [Tree(2, [Tree(3)]), Tree(4)])
+    >>> negate = lambda x: -x
+    >>> alt_tree_map(t, negate)
+    Tree(-1, [Tree(2, [Tree(-3)]), Tree(4)])
+    """
+    t.label = map_fn(t.label)
+    for b in t.branches:
+        for grandchild in b.branches:
+            alt_tree_map(grandchild, map_fn)
+    return t
+
 
 
 #Link & Tree abstration
