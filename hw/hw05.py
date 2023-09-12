@@ -264,7 +264,7 @@ def path_yielder(t, value):
     for b in t.branches:
         for x in path_yielder(b, value):
             "*** YOUR CODE HERE ***"
-            yield from [[t.label] + x]
+            yield [t.label] + x
 
 
 class Link:
