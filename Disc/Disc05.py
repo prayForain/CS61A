@@ -1,6 +1,5 @@
 #Disc 5 Trees, Binary Numbers
 #pass-test
-#But I really do not know why the solution of 2.2 works.
 
 # Tree ADT
 
