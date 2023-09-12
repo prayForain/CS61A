@@ -1,5 +1,5 @@
 #Disc 4 Recursion & Lists
-#pass_test
+#pass-test
 
 #1.1
 def count_stair_ways(n):
