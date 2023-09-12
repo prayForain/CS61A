@@ -1,5 +1,5 @@
 #Disc 3 Recursion
-#pass_test
+#pass-test
 
 #1.1
 def multiply(m, n):
