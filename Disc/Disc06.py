@@ -1,6 +1,6 @@
 #Disc 6 Nonlocal, Mutability, Iterators, Generators
 #pass-test
-#1. 2.2
+
 #For the qusetion 2.4, there is something wrong in the pdf, the s after executing the command add_this_many(1, 5, s) should be [1, 2, 4, 2, 1, 5]
 #instead of [1, 2, 4, 2, 1, 5 , 5]
 
