@@ -64,14 +64,19 @@ True
 """
 
 #2.2
-"""def mystery(p, q):
-    p[1].extend(q[1])
-    .append(   [1:])
+def mystery(p, q):
+    """
+    >>> p = [2, 3]
+    >>> q = [4, [p]]
+    >>> mystery(q, p)
+    >>> p
+    [2, 3, [[[...], 2, 3]]]
+    >>> q
+    [4, [[2, 3, [[...]]], 2, 3]]
+    """
+    p[1].extend(q)
+    q.append(p[1:])
 
-p = [2, 3]
-q = [4, [p]]
-mystery(p, q)
-"""
 
 
 #2.3
