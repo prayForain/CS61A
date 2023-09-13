@@ -1,6 +1,6 @@
 from queue import Empty
-
 #pass-test
+
 
 class VendingMachine:
     """A vending machine that vends some product for some price.
