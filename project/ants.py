@@ -1,5 +1,5 @@
 """CS 61A presents Ants Vs. SomeBees."""
-
+#pass-test
 import random
 from ucb import main, interact, trace
 from collections import OrderedDict
