@@ -80,7 +80,7 @@
 (define (derive-exp exp var)
   'YOUR-CODE-HERE
   (make-product (second-operand exp)
-                (make-product (derive (first-operand exp) var)
+                (make-product (derive (first-operand exp) var) ; the chain-rule
                               (make-exp (first-operand exp)
                                         (- (second-operand exp) 1))))
 )
