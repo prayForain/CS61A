@@ -1,5 +1,5 @@
 .read data.sql
-
+-- pass-test
 
 CREATE TABLE bluedog AS
   SELECT color, pet from students
