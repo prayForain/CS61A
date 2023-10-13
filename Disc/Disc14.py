@@ -1,5 +1,6 @@
 # Disc 14 Final Review
 
+from operator import add, mul
 #1.1
 def paths(x, y):
     """Return a list of ways to reach y from x by repeated incrementing or doubling.
@@ -140,8 +141,152 @@ def f():
     """
 
 
+#3.2
+def bake(banana, bread):
+    # _______________(____________(__________)) # This line is Multiple Choice
+    # Select all correct answers for the blank above
+    # A. banana.append(bread.append(1))
+    # B. bread.append(banana.append(1))
+    # C. banana.extend([bread.extend([1])])
+    # D. bread.extend([banana.extend([1])])
+    banana.append(bread.append(1)) # Or C
+    bread += banana[: (len(banana) - 1)]
+    banana.append(bread[bread[1]])
+    return banana, bread
+
+s = [1]
+banana, bread = bake(s, [7, 2, s])
+
+
+#3.3
+def amon(g):
+    n = 0
+    def u(s):
+        nonlocal n
+        f = lambda x: x + g.pop() + n
+        n += 1
+        return f(s)
+    return u
+
+g = [1, 2, 3]
+skeld = amon(g)
+pink = skeld(1)
+purple = skeld(2)
+
+
+#4.1
+class  Emotion():
+    """
+    >>> Emotion.num
+    0
+    >>> joy = Joy()
+    >>> sadness = Sadness()
+    >>> Emotion.num # number of Emotion instances created
+    2
+    >>> joy.power
+    5
+    >>> joy.catchphrase() # Print Joy's catchphrase
+    Think positive thoughts
+    >>> sadness.catchphrase() #Print Sad's catchphrase
+    I'm positive you will get lost
+    >>> sadness.power
+    5
+    >>> joy.feeling(sadness) # When both Emotions have same power value, print "Together"
+    Together
+    >>> sadness.feeling(joy)
+    Together
+    >>> joy.power = 7
+    >>> joy.feeling(sadness) # Print the catchphrase of the more powerful feeling before the less powerful feeling
+    Think positive thoughts
+    I'm positive you will get lost
+    >>> sadness.feeling(joy)
+    Think positive thoughts
+    I'm positive you will get lost
+    """
+    num = 0
+    def __init__(self):
+        Emotion.num += 1
+        self.power = 5
+    def feeling(self, other):
+        if self.power == other.power:
+            print("Together")
+        elif self.power > other.power:
+            self.catchphrase()
+            other.catchphrase()
+        else:
+            other.catchphrase()
+            self.catchphrase()
+
+class Joy(Emotion):
+
+    def catchphrase(self):
+        print("Think positive thoughts")
+
+class Sadness(Emotion):
+
+    def catchphrase(self):
+        print("I'm positive you will get lost")
+
+
+#5.1
+def remove_duplicates(lnk):
+    """
+    >>> lnk = Link(1, Link(1, Link(1, Link(1, Link(5)))))
+    >>> remove_duplicates(lnk)
+    >>> lnk
+    Link(1, Link(5))
+    """
+    if lnk.rest == Link.empty:
+        pass
+    elif lnk.first == lnk.rest.first:
+        lnk.first = lnk.rest.first
+        lnk.rest = lnk.rest.rest
+        remove_duplicates(lnk)
+    else:
+        remove_duplicates(lnk.rest)
+
     
-    
+#6.1
+def repeated(f):
+    """
+    >>> double = lambda x: 2 * x
+    >>> funcs = repeated(double)
+    >>> identity = next(funcs)
+    >>> double = next(funcs)
+    >>> quad = next(funcs)
+    >>> oct = next(funcs)
+    >>> quad(1)
+    4
+    >>> oct(1)
+    8
+    >>> [g(1) for _, g in zip(range(5), repeated(lambda x: 2 * x))]
+    [1, 2, 4, 8, 16]
+    """
+
+    g = lambda x: x
+    while True:
+        yield g
+        g = (lambda g: lambda x: f(g(x)))(g)
+
+
+#6.2
+"""It doesn't work which will get a RecursionError."""
+
+
+#6.3
+def accumulate(iterable, f): 
+    """
+    >>> list(accumulate([1, 2, 3, 4, 5], add))
+    [1, 3, 6, 10, 15]
+    >>> list(accumulate([1, 2, 3, 4, 5], mul))
+    [1, 2, 6, 24, 120]
+    """
+    it = iter(iterable)
+    v = next(it)
+    yield v
+    for i in it:
+        v = f(v, i)
+        yield v
 
 
 
